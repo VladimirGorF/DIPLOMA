@@ -24,10 +24,13 @@ This is my  diploma project as the end of study of Geek Brains teaching.
 
 MySQL
 MAMP supports MySQL 5.7
+
 Apache
 The leading HTTP server is integrated
+
 Nginx
 Also the Apache alternative is included
+
 PHP
 The leading scripting language in web development incl. the new version PHP 8
 
