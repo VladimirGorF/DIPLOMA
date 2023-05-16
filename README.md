@@ -78,7 +78,11 @@ The leading scripting language in web development incl. the new version PHP 8
 
 
 2. Создание сайта.
+В наешй папке wordpress.dev\wp-content\themes создаем свою тему сайта(внешнй вид), и создаем в нем файл style.css и screenshot.png. Первый нужен, чтобы WORDPRESS (далее везде WP), не считал нашу тему поврежденной и показал нам ее в своем меню в WP - Внешний вид\Темы. Второй нужен как заставка нашей темы,  WP увидит ее в папке и подгрузит самостоятельно.
 
+
+
+underscores.me - генератор тем для WordPress wp-kama.ru 
 
 
 
