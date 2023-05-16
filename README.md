@@ -8,6 +8,8 @@ This is my  diploma project as the end of study of Geek Brains teaching.
  
  3. Итоги
  
+ 4. Источники
+ 
  
  
  1.
@@ -75,8 +77,23 @@ The leading scripting language in web development incl. the new version PHP 8
 Таким образом мы закончили подготовку к основной работе и можем перейти непосредственно к созданию сайта.
 
 
+
 2. Создание сайта.
-Полезнаые ссылки:  
+
+
+
+
+
+
+
+
+
+
+
+
+
+4. Источники.
+Полезные ссылки:  
 underscores.me - генератор тем для WordPress
 wp-kama.ru руководство по использованию функций
 
