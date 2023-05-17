@@ -108,6 +108,7 @@ The leading scripting language in web development incl. the new version PHP 8
  Начнем с подключения шрифтов и стилей. Для этого нам необходимо создать функции 'style_theme' и 'scripts_theme'. 
  
  function style_theme(){
+ 
     wp_enqueue_style('style', get_stylesheet_uri());
     wp_enqueue_style('default', get_template_directory_uri() . '/assets/css/default.css');
     wp_enqueue_style('layout', get_template_directory_uri() . '/assets/css/layout.css');
@@ -116,6 +117,7 @@ The leading scripting language in web development incl. the new version PHP 8
 }
 
 function scripts_theme(){
+
     wp_enqueue_script('jquery.flexslider', get_template_directory_uri() . '/assets/js/jquery.flexslider.js' );
     wp_enqueue_script('doubletaptogo', get_template_directory_uri() . '/assets/js/doubletaptogo.js' );
     wp_enqueue_script('init', get_template_directory_uri() . '/assets/js/init.js' );
@@ -128,7 +130,8 @@ add_action('wp_footer', 'scripts_theme');
 
 Далее мы создадим функцию, позволяющую зарегистрировать нам меню сайта, добавим в нее реализацию добавления изображений  в определенных типах записей, фильтр для вывода подсказки "Читать далее", 
 
-function theme_register_nav_menu() {    
+function theme_register_nav_menu() { 
+
 	register_nav_menu( 'top', 'Меню в шапочке' );
     register_nav_menu( 'footer', 'Меню в подвале' );
     register_nav_menu( 'page_menu_top', 'Меню в страничке page' );
@@ -191,6 +194,64 @@ function register_post_types(){
 
 }
 
+Вызываться это все будет действием в мемент срабатывания 'init' :
+add_action( 'init', 'register_post_types' );
+
+Далее зарегистрируем таксономию skills путем написания функции ниже с указанием нужных нам параметров и названий полей.
+
+function create_taxonomy(){
+
+	// список параметров: wp-kama.ru/function/get_taxonomy_labels
+	register_taxonomy( 'skills', [ 'portfolio' ], [
+		'label'                 => '', // определяется параметром $labels->name
+		'labels'                => [
+			'name'              => 'Навык',
+			'singular_name'     => 'Навык',
+			'search_items'      => 'Search Навык',
+			'all_items'         => 'All Навык',
+			'view_item '        => 'View Навык',
+			'parent_item'       => 'Parent Навык',
+			'parent_item_colon' => 'Parent Навык:',
+			'edit_item'         => 'Edit Навык',
+			'update_item'       => 'Update Навык',
+			'add_new_item'      => 'Add New Навык',
+			'new_item_name'     => 'New Навык Name',
+			'menu_name'         => 'Навык',
+			'back_to_items'     => '← Назад в Навык',
+		],
+		'description'           => 'Навыки, которые использовались в работе над проектами', // описание таксономии
+		'public'                => true,
+		'publicly_queryable'    => null, // равен аргументу public
+		'hierarchical'          => false,
+		'rewrite'               => true,
+	] );
+}
+
+Вызовем это все действием add_action( 'init', 'create_taxonomy' );
+
+Также зарегистрируем наш сайдбар.
+
+function register_my_widgets(){   
+
+	register_sidebar( array(
+		'name'          => "Left Sidebar",
+		'id'            => "left_sidebar",
+		'description'   => 'Левый  сайдбар',
+		'before_widget' => '<div class="widget %2$s">',
+		'after_widget'  => "</div>\n",
+		'before_title'  => '<h5 class="widgettitle">',
+		'after_title'   => "</h5>\n",
+		'before_sidebar' => '', // WP 5.6
+		'after_sidebar'  => '' // WP 5.6
+	) );
+}
+
+Подключим его: add_action( 'widgets_init', 'register_my_widgets' );
+
+2.3 Создание сайта. Работа со страницами.
+
+
+
 
 
 
@@ -202,7 +263,7 @@ function register_post_types(){
 4. Источники.
 Полезные ссылки:  
 underscores.me - генератор тем для WordPress
-wp-kama.ru руководство по использованию функций
+wp-kama.ru руководство по использованию функций  в WORDPRESS
 
 
 
