@@ -1,5 +1,5 @@
 # DIPLOMA
-This is my  diploma project as the end of study of Geek Brains teaching.
+This is my diploma project as the end of study  in Geek Brains.
 
  Оглавление:
  1. Цели и Задачи проекта. 1.1 Выбор инструментов и подготовка.
