@@ -169,6 +169,9 @@ add_action('wp_footer', 'scripts_theme');
 Заходим в меню WP - Внешний вид/настроить/свойства сайта и в поле "Название сайта" пишем наше название RossVisa. 
 <img width="1728" alt="Снимок экрана 2023-08-23 в 12 22 56" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/25ff7e54-496a-4fd6-9e20-c27cbce38a6a">	
 
+![myiPhoto2](https://github.com/VladimirGorF/DIPLOMA/assets/110591063/b4997c87-241b-410e-9111-c4f5b466a546)
+
+
 
 
 
