@@ -195,7 +195,6 @@ function theme_register_nav_menu() {
 
 add_action( 'after_setup_theme', 'theme_register_nav_menu' );
 
-<img width="1728" alt="Снимок экрана 2023-08-23 в 13 01 24" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/eba61d73-5807-4ee6-a4ab-27574b059da0">
 
 После заведения меню в админке WP к нему применятся нужные стили и оно выстроится в строчку, как и нужно.
 
