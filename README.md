@@ -178,8 +178,6 @@ add_action('wp_footer', 'scripts_theme');
 function theme_register_nav_menu() { 
 
 	register_nav_menu( 'top', 'Меню в шапочке' );
-    register_nav_menu( 'footer', 'Меню в подвале' );
-    register_nav_menu( 'page_menu_top', 'Меню в страничке page' );
 	add_theme_support( 'title-tag' );
 	// создаем в WP в записях возможность добавления картинок
 	add_theme_support( 'post-thumbnails', array( 'post', 'portfolio' ) );  // в скобках пишем в каких типах записей можно добавлять картинки
@@ -196,7 +194,10 @@ function theme_register_nav_menu() {
 add_action( 'after_setup_theme', 'theme_register_nav_menu' );
 
 
-После заведения меню в админке WP к нему применятся нужные стили и оно выстроится в строчку, как и нужно.
+Заведем  меню в админке WP. Внешний вид\ Меню \Создать новое меню. Назовем его 'Верхнее Меню'  и установим область отображения 'Меню в шапочке'. Нажимаем создать меню. 
+![Снимок экрана 2023-08-23 в 20 44 30](https://github.com/VladimirGorF/DIPLOMA/assets/110591063/f79a2f48-0c55-405e-abd2-67e0380aa982)
+
+После этого к меню применятся нужные стили и оно выстроится в строчку, как и нужно.
 
 Далее добавим еще несколько страниц в наше меню. 
 <img width="1728" alt="Снимок экрана 2023-08-23 в 13 11 55" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/0d5edc66-6a05-4bd8-bb05-063a81b94c59">
@@ -207,7 +208,75 @@ add_action( 'after_setup_theme', 'theme_register_nav_menu' );
 Далее, для того чтобы выбранная страниц а в нашем меню подсвечивалась необходимо откорректировать стили css. Идем в   assets/css/layout.css, находим в нем код "ul#nav li.current a { color: #fff; }" и вместо "current" пишем "current-menu-item". Проверяем работу подсветки зайдя в страничку Контакты и видим, что она подсвечивается теперь белым цветом:
 <img width="1728" alt="Снимок экрана 2023-08-23 в 13 28 12" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/b2c13ed6-474e-40e1-af8a-99efb8988200">
 
-Теперь для одной из наших страниц создадим вложенные страницы.....
+
+2.2.4 Вложенные страницы.
+Теперь для одной из наших страниц создадим вложенные страницы. Для этого зайдем в раздел Внешний вид\Меню. Странички 'Гражданам других государств' и 'Гражданам СССР И СНГ' сдвинем на одну табуляцию вправо. 
+
+<img width="1728" alt="Снимок экрана 2023-08-23 в 19 00 49" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/2c0cf416-3b58-4d5d-8823-f601c99ef31b">
+
+Таким образом они станут дочерними для вышестоящей страницы 'Гражданство РФ' и при наведении курсора на родительскую страницу будет выскакивать подменю с двумя дочерними страницами.  Стандартое меню, которое у нас было в header.php изначально, необходимо удалить, чтобы было только наше новое.
+
+<img width="1728" alt="Снимок экрана 2023-08-23 в 19 01 55" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/616b1f12-0687-4742-8510-52c9000d915d">
+
+
+Теперь зарегистрируем еще 2 меню в нашей функции function theme_register_nav_menu() добавим еще две строчки в файле functions.php:
+
+register_nav_menu( 'footer', 'Меню в подвале' );
+
+register_nav_menu( 'page_menu_top', 'Меню в страничке page' );
+
+И затем в footer.php page.php добавим: 
+
+            <nav id="footer-nav">
+                <?php wp_nav_menu(array(
+                  'theme_location'  => 'footer',
+                  'container'       => null,
+                  'menu_class'      => 'footer-nav',
+                  'menu_id'         => 'footer-nav'
+                ));?>
+            </nav> 
+
+Заведем   это меню в админке WP. Внешний вид\ Меню \Создать новое меню. Назовем его 'Меню в подвале'  и установим область отображения 'Меню в подвале'. Нажимаем создать меню. Далее добавим еще несколько страниц в наше меню. 
+После этого к меню применятся нужные стили и оно выстроится в строчку, как и нужно.
+<img width="1728" alt="Снимок экрана 2023-08-23 в 20 52 13" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/bdc4aac9-019c-4235-ba64-8760eedb0b5f">
+
+Теперь закомментируем бывшее меню:
+     <!-- <ul class="footer-nav">
+		<li><a href="#">Home.</a></li>
+              	<li><a href="#">Blog.</a></li>
+              	<li><a href="#">Portfolio.</a></li>
+              	<li><a href="#">About.</a></li>
+              	<li><a href="#">Contact.</a></li>
+               <li><a href="#">Features.</a></li>
+	</ul> -->
+
+и посмотрим как оно выглядит у нас на сайте.
+<img width="1728" alt="Снимок экрана 2023-08-23 в 20 56 03" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/51b7e03a-883e-4aca-b74f-7f2b5615ff48">
+
+
+А в header-page.php добавим:  
+
+	    <nav id="footer-nav">
+                <?php wp_nav_menu(array(
+                  'theme_location'  => 'page_menu_top',
+                  'container'       => null,
+                  'menu_class'      => 'footer-nav',
+                  'menu_id'         => 'footer-nav'
+                ));?>
+            </nav> 
+
+Заведем  это меню также в админке WP. Внешний вид\ Меню \Создать новое меню. Назовем его 'Меню-page'  и установим область отображения 'Меню в страничке page'. Нажимаем создать меню. Далее добавим еще несколько страниц в наше меню. 
+<img width="1728" alt="Снимок экрана 2023-08-23 в 21 00 42" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/d498f15f-1599-42bd-95f3-843dc8250344">
+
+
+После этого к меню применятся нужные стили и оно выстроится в строчку, как и нужно.
+на страничке page.php вызываем уже по другому наш header для страницы page:
+<?php get_header('page'); ?>
+
+Теперь првоеряем меню на странице контакты.
+<img width="1728" alt="Снимок экрана 2023-08-23 в 21 09 19" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/905c3340-3df7-4bb5-a10c-096a6a2ce64d">
+
+
 
 
 
