@@ -201,7 +201,13 @@ add_action( 'after_setup_theme', 'theme_register_nav_menu' );
 Далее добавим еще несколько страниц в наше меню. 
 <img width="1728" alt="Снимок экрана 2023-08-23 в 13 11 55" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/0d5edc66-6a05-4bd8-bb05-063a81b94c59">
 
+И после публикации наше меню уже выглядит вполне весомо:
+<img width="1728" alt="Снимок экрана 2023-08-23 в 13 17 02" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/62344bbe-791a-45bd-8cca-cdee8158579d">
 
+Далее, для того чтобы выбранная страниц а в нашем меню подсвечивалась необходимо откорректировать стили css. Идем в   assets/css/layout.css, находим в нем код "ul#nav li.current a { color: #fff; }" и вместо "current" пишем "current-menu-item". Проверяем работу подсветки зайдя в страничку Контакты и видим, что она подсвечивается теперь белым цветом:
+<img width="1728" alt="Снимок экрана 2023-08-23 в 13 28 12" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/b2c13ed6-474e-40e1-af8a-99efb8988200">
+
+Теперь для одной из наших страниц создадим вложенные страницы.....
 
 
 
