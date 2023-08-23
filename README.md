@@ -167,7 +167,7 @@ add_action('wp_footer', 'scripts_theme');
 Функция php echo home_url() - будет всегда выдавать нам домашний адрес стартовой страницы. Мы обернули ее в тег 'a' чтобы она была рабочей ссылкой на нее.
 Функия php bloginfo('name') - будет возваращать нам название сайта, которое мы можем менять в админке WP. 
 Заходим в меню WP - Внешний вид/настроить/свойства сайта и в поле "Название сайта" пишем наше название RossVisa. 
-<img width="1728" alt="Снимок экрана 2023-08-23 в 12 22 56" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/25ff7e54-496a-4fd6-9e20-c27cbce38a6a">
+<img width="1728" alt="Снимок экрана 2023-08-23 в 12 22 56" src="https://github.com/VladimirGorF/DIPLOMA/assets/110591063/25ff7e54-496a-4fd6-9e20-c27cbce38a6a">	
 
 
 
